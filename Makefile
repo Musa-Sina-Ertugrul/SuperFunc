@@ -18,6 +18,6 @@ shared_libs:
 	cp ./HashMap/*.so ./
 
 clean:
-	rm -rf ./include/hash*
+	rm -rf ./include/hash*.h
 	rm -rf ./*.so
 	rm -rf ./*.o
