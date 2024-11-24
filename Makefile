@@ -8,7 +8,9 @@ SRC_DIR = src
 all:super.o
 
 super.o: headers shared_libs
-
+	gcc -g -Wall -Wextra -c -fPIC $(SRC_DIR)/*.c -I$(INCLUDE_DIR) -o super.o
+	gcc super.o -shared -o libsuper.so
+	gcc -o main main.c -L. -lsuper -I$(INCLUDE_DIR) -Wl,-rpath=.
 
 headers:
 	cp -a ./HashMap/include/. ./include/
@@ -18,6 +20,7 @@ shared_libs:
 	cp ./HashMap/*.so ./
 
 clean:
+	$(MAKE) -C ./HashMap/ clean
 	rm -rf ./include/hash*.h
 	rm -rf ./*.so
 	rm -rf ./*.o
