@@ -10,7 +10,7 @@ all:super.o
 super.o: headers shared_libs
 	gcc -g -Wall -Wextra -c -fPIC $(SRC_DIR)/*.c -I$(INCLUDE_DIR) -o super.o
 	gcc super.o -shared -o libsuper.so
-	gcc -o main main.c -L. -lsuper -I$(INCLUDE_DIR) -Wl,-rpath=.
+	gcc -g -o main main.c -L. -lsuper -lhashmap -I$(INCLUDE_DIR) -Wl,-rpath=.
 
 headers:
 	cp -a ./HashMap/include/. ./include/
